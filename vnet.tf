@@ -25,14 +25,14 @@ resource "azurerm_virtual_network" "example" {
 
 ### Virtual Network Peering ###
 resource "azurerm_virtual_network_peering" "virtualnetwork" {
-  name                      = "peerlocal"
+  name                      = "${azurerm_virtual_network.namingPrefix}-jmb-infra-vn"
   resource_group_name       = azurerm_resource_group.coreNetworking.name
   virtual_network_name      = azurerm_virtual_network.example.name
   remote_virtual_network_id = "/subscriptions/bf706a6f-4710-459b-bb7b-22ca2ffb50c1/resourceGroups/core-networking-infra-we-rg/providers/Microsoft.Network/virtualNetworks/jmb-infra-vn"
 }
 
 resource "azurerm_virtual_network_peering" "infrastructure-vn" {
-  name                      = "infra-vn"
+  name                      = "jmb-infra-vn-${azurerm_virtual_network.namingPrefix}"
   resource_group_name       = "core-networking-infra-we-rg"
   virtual_network_name      = "jmb-infra-vn"
   remote_virtual_network_id = azurerm_virtual_network.example.id
