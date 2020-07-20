@@ -30,46 +30,9 @@ security_rule {
     destination_address_prefix = "*"
     description                = "Allow RDP inbound traffic"
   }
-
-  security_rule {
-    name                       = "allowSQL"
-    priority                   = 151
-    direction                  = "Inbound"
-    access                     = "Allow"
-    protocol                   = "Tcp"
-    source_port_range          = "*"
-    destination_port_range     = "1433"
-    source_address_prefix      = "*"
-    destination_address_prefix = "*"
-  }  
-
-    security_rule {
-    name                       = "allowHTTP"
-    priority                   = 152
-    direction                  = "Inbound"
-    access                     = "Allow"
-    protocol                   = "Tcp"
-    source_port_range          = "*"
-    destination_port_range     = "80"
-    source_address_prefix      = "*"
-    destination_address_prefix = "*"
-  }
-  
-  security_rule {
-    name                       = "allowHTTPS"
-    priority                   = 153
-    direction                  = "Inbound"
-    access                     = "Allow"
-    protocol                   = "Tcp"
-    source_port_range          = "*"
-    destination_port_range     = "443"
-    source_address_prefix      = "*"
-    destination_address_prefix = "*"
-  }
-
   security_rule {
     name                       = "allowUIM"
-    priority                   = 154
+    priority                   = 151
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
@@ -81,7 +44,7 @@ security_rule {
 
   security_rule {
     name                       = "allowSystemCenter"
-    priority                   = 155
+    priority                   = 152
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
@@ -93,7 +56,7 @@ security_rule {
 
   security_rule {
     name                       = "allowJumboMGMT"
-    priority                   = 156
+    priority                   = 153
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
@@ -105,7 +68,7 @@ security_rule {
 
   security_rule {
     name                       = "allowSimacMGMT"
-    priority                   = 157
+    priority                   = 154
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
@@ -114,6 +77,32 @@ security_rule {
     source_address_prefix      = "10.168.11.0/24"
     destination_address_prefix = "*"
   }
+
+  security_rule {
+    name                       = "allowHTTPS"
+    priority                   = 155
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "443"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
+
+  security_rule {
+    name                       = "allowHTTP"
+    priority                   = 156
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "80"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+  
 
   security_rule {
     name                       = "allowAzureLoadbalancer"
@@ -139,9 +128,10 @@ security_rule {
     destination_address_prefix = "*"
 
   }
+
   security_rule {
     name                       = "AllowICMP"
-    priority                   = 403
+    priority                   = 400
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "ICMP"
